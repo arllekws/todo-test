@@ -1,0 +1,23 @@
+/* Remove o padding e a borda para um visual mais limpo */
+.phraseContainer {
+  margin-top: var(--space-lg); /* Mantém o espaço acima para separar da lista */
+  text-align: left; /* Alinha todo o texto à esquerda */
+}
+
+/* Estilo para a frase em si: menor e mais sutil */
+.phrase {
+  font-family: var(--font-family-main); /* Usa a mesma fonte do resto do app */
+  font-style: normal; /* Remove o itálico */
+  font-size: 0.9rem; /* Fonte um pouco menor */
+  color: var(--color-text-secondary); /* Cor secundária para não chamar muita atenção */
+  margin-bottom: 4px; /* Pequeno espaço entre a frase e o autor */
+  
+  /* Efeito de transição suave quando a frase muda */
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Estilo para o autor: ainda menor e mais discreto */
+.author {
+  font-size: 0.8rem;
+  color: #666; /* Cor ainda mais esmaecida */
+}

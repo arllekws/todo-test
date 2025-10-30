@@ -1,54 +1,63 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; 
 import Header from "../../components/Header";
 import Tabs from "../../components/Tabs";
-import TodoList from '../../components/TodoList'; // 1. Importe o TodoList
+import TodoList from '../../components/TodoList'; 
 import styles from './style.module.css';
 import FinishedTasks from '../../components/FinishedTasks';
 import AddTodoForm, { type FormInputs } from '../../components/AddTodoForm';
-// import
-//     import AddTodoForm from '../../components/AddTodoForm';
-
-// Componentes placeholder para a coluna da direita
-// const FinishedTasks = () => <div style={{ backgroundColor: 'var(--color-surface)', padding: 'var(--space-sm)', borderRadius: 'var(--border-radius-md)', height: 150 }}><h2>Finished tasks quantity</h2></div>;
-// const AddTodoForm = () => <div style={{ backgroundColor: 'var(--color-surface)', padding: 'var(--space-sm)', borderRadius: 'var(--border-radius-md)', height: 250 }}><h2>Add new to do</h2></div>;
-
-// 2. Dados de exemplo para as tarefas
-interface Task {
-  id: number | string;
-  title: string;
-  description: string;
-  date: string;
-}
-
-const initialTasks: Task[] = [
-  { id: 1, title: 'Mother breakfast', description: 'I need to do my mother breakfast.', date: '17 March 2021 at 08:00 PM' },
-  { id: 2, title: 'Learn React', description: 'Study about components and state.', date: '17 March 2021 at 09:00 PM' },
-  { id: 3, title: 'Go to the gym', description: 'Leg day!', date: '17 March 2021 at 10:00 PM' },
-];
+import ChuckNorrisPhrase from '../../components/ChuckNorrisPhrase';
+import type { TaskData as Task } from '../../components/TodoCard';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('Todo');
-  const [tasks, setTasks] = useState(initialTasks); // 3. Estado para a lista de tarefas
+  
+  // Lógica do localStorage (sem alterações)
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const savedTasks = localStorage.getItem('minhasTarefasPendentes');
+    if (savedTasks) {
+      return JSON.parse(savedTasks, (key, value) => {
+        if (key === 'date') return new Date(value);
+        return value;
+      });
+    }
+    return [];
+  }); 
+  
+  const [completedTasks, setCompletedTasks] = useState<Task[]>(() => {
+    const savedCompleted = localStorage.getItem('minhasTarefasConcluidas');
+    if (savedCompleted) {
+      return JSON.parse(savedCompleted, (key, value) => {
+        if (key === 'date') return new Date(value);
+        return value;
+      });
+    }
+    return [];
+  });
 
-  // Crie a função para ADICIONAR uma tarefa
+  useEffect(() => {
+    localStorage.setItem('minhasTarefasPendentes', JSON.stringify(tasks));
+  }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem('minhasTarefasConcluidas', JSON.stringify(completedTasks));
+  }, [completedTasks]);
+
+  // Funções de manipulação de tarefas (sem alterações)
   const handleAddTask = (data: FormInputs) => {
-// Cria a nova tarefa completa
-const newTask: Task = {
-id: Date.now(), // ID único
-title: data.title,
-description: data.description ?? '',
-date: new Date().toLocaleString() // <-- AQUI ESTÁ A CORREÇÃO!
- };
+    const newTask: Task = {
+      id: Date.now(),
+      title: data.title,
+      description: data.description ?? '',
+      date: new Date()
+    };
+    setTasks(currentTasks => [newTask, ...currentTasks]);
+  };
 
- // Adiciona a nova tarefa à lista de tarefas
-setTasks(currentTasks => [newTask, ...currentTasks]);
- };
-
-  // 4. Função para deletar uma tarefa
-  const handleDeleteTask = (id: string | number) => {
-    // Filtra a lista, mantendo apenas as tarefas com id diferente do que foi clicado
+  const handleCompleteTask = (id: string | number) => {
+    const taskToComplete = tasks.find(task => task.id === id);
+    if (!taskToComplete) return;
+    setCompletedTasks(currentCompleted => [taskToComplete, ...currentCompleted]);
     setTasks(currentTasks => currentTasks.filter(task => task.id !== id));
-    console.log(`Deletando tarefa com id: ${id}`);
   };
 
   return (
@@ -57,21 +66,23 @@ setTasks(currentTasks => [newTask, ...currentTasks]);
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className={styles.mainContainer}>
-        {/* Coluna da Esquerda */}
         <div className={styles.leftColumn}>
           {activeTab === 'Todo' && (
-            // 5. Use o componente TodoList aqui!
-            <TodoList tasks={tasks} onDeleteTask={handleDeleteTask} />
+            <TodoList tasks={tasks} onCompleteTask={handleCompleteTask} />
           )}
+          {/* MUDANÇA: Revertido para o placeholder original, como você pediu */}
           {activeTab === 'Metrics' && <p style={{ color: 'white' }}>Métricas aparecerão aqui</p>}
         </div>
 
-        {/* Coluna da Direita */}
-        <div className={styles.rightColumn}>
-          <FinishedTasks quantity={tasks.length} />
-          <AddTodoForm onAddTask={handleAddTask} />
-        </div>
+        {activeTab === 'Todo' && (
+          <div className={styles.rightColumn}>
+            <FinishedTasks quantity={completedTasks.length} />
+            <AddTodoForm onAddTask={handleAddTask} />
+          </div>
+        )}
       </main>
+
+      {activeTab === 'Todo' && <ChuckNorrisPhrase />}
     </div>
-  )
+  );
 }

@@ -13,10 +13,24 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm); /* 16px de espaço entre os cards */
+
+  /* --- ADIÇÕES PARA O SCROLL --- */
+  max-height: 60vh; /* Altura máxima: 60% da altura da tela (viewport height) */
+  overflow-y: auto; /* Adiciona o scroll vertical APENAS se necessário */
+  padding-right: var(--space-xs); /* Adiciona um espaço para a barra de scroll não colar nos cards */
 }
-.noTasksMessage {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  text-align: center;
-  margin-top: var(--space-md); /* 24px */
+
+/* BÔNUS: Estilização da barra de scroll para um visual mais moderno (opcional) */
+.cardsWrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cardsWrapper::-webkit-scrollbar-track {
+  background: transparent; /* Fundo da trilha transparente */
+}
+
+.cardsWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--color-surface); /* Cor da barra de scroll */
+  border-radius: 20px;
+  border: 3px solid var(--color-surface);
 }

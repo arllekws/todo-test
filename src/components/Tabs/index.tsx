@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-// Definimos os tipos para as propriedades que o componente vai receber
 interface TabsProps {
   activeTab: string; // A aba que está ativa no momento
   setActiveTab: (tab: string) => void; // Função para mudar a aba ativa
