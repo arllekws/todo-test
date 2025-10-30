@@ -1,0 +1,36 @@
+/* Defina as variáveis de cor no seu arquivo CSS global ou no topo deste arquivo, se preferir */
+:root {
+  --text-primary: #FFFFFF;
+  --text-secondary: #A9A9A9; /* Um cinza claro para o subtítulo */
+}
+
+.headerContainer {
+  width: 100%;
+  text-align: left;
+  padding: 40px 0; /* Espaçamento vertical para dar respiro */
+}
+
+.title {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif; /* Sugestão de fonte moderna */
+  font-size: 4rem; /* Tamanho grande para o título principal */
+  font-weight: bold;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.subtitle {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: 8px; /* Pequeno espaço entre o título e o subtítulo */
+  font-weight: normal;
+}
+
+.day {
+  font-weight: 300; /* deixa mais fininho */
+  color: #666; /* opcional: tom diferente */
+}
+
+.do{
+    font-weight: 700; /* deixa mais grosso */
+}

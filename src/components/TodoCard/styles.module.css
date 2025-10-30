@@ -1,0 +1,59 @@
+.cardContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-surface);
+  padding: var(--space-sm); /* 16px */
+  border-radius: var(--border-radius-md); /* 12px */
+  border-left: 4px solid var(--color-primary); /* Detalhe da borda rosa à esquerda */
+  gap: var(--space-sm);
+}
+
+.content {
+  flex: 1; /* Permite que o conteúdo cresça e ocupe o espaço disponível */
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700; /* bold */
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm); /* Espaço entre a data e o botão */
+}
+
+.date {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap; /* Impede que a data quebre a linha */
+}
+
+.deleteButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.deleteButton:hover {
+  opacity: 1;
+}
+
+.deleteIconImage {
+  width: 24px; 
+  height: 24px; 
+}

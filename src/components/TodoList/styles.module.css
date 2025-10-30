@@ -1,0 +1,22 @@
+.listContainer {
+  width: 100%;
+}
+
+.listTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md); /* 24px */
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm); /* 16px de espaço entre os cards */
+}
+.noTasksMessage {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: var(--space-md); /* 24px */
+}
