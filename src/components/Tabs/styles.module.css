@@ -2,6 +2,7 @@
   display: flex;
   gap: var(--space-xs); /* Usa a variável de espaçamento (8px) */
   margin-bottom: var(--space-lg); /* Espaço abaixo das abas */
+  background-color: var(--color-text-surface);
 }
 
 .tabButton {

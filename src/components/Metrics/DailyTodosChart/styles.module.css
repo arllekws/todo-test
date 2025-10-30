@@ -1,0 +1,21 @@
+.card {
+  background-color: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.chartContainer {
+  width: 100%;
+  height: 250px; /* Altura fixa para o gráfico de barras */
+}

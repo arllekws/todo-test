@@ -1,0 +1,30 @@
+.card {
+  background-color: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.chartContainer {
+  width: 220px;
+  height: 110px; /* Exatamente metade da largura para formar o semicírculo */
+  overflow: hidden; /* Garante que nada vaze para fora */
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}

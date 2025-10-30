@@ -1,17 +1,7 @@
-"use client";
-
 import React from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import styles from './styles.module.css';
-
-export interface FormInputs {
-  title: string;
-  description: string;
-}
-
-interface AddTodoFormProps {
-  onAddTask: (data: FormInputs) => void;
-}
+import {  type AddTodoFormProps, type FormInputs } from '../../@types/types';
 
 const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAddTask }) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormInputs>();
