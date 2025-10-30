@@ -4,6 +4,7 @@
 :root {
   /* Cores */
   --color-background: #222222; /* Um cinza um pouco mais escuro para o fundo geral */
+  --color-background2: #474747; /* Um cinza um pouco mais escuro para o fundo geral */
   --color-surface: #3D3D3D;   /* Cor de fundo para os cards e elementos */
   --color-primary: #FFA5A5;   /* Rosa, para botões de ação e destaques */
   --color-text-primary: #FFFFFF;

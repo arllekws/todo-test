@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-surface);
+  background-color: var(--color-background2);
   padding: var(--space-sm); /* 16px */
   border-radius: var(--border-radius-md); /* 12px */
   gap: var(--space-sm);

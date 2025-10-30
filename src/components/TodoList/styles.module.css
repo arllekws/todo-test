@@ -1,5 +1,9 @@
 .listContainer {
   width: 100%;
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  padding: var(--space-md); /* Adiciona padding interno para evitar que o conteúdo cole nas bordas */
+  box-sizing: border-box; /* Garante que padding seja incluído no cálculo da largura */
 }
 
 .listTitle {
@@ -7,14 +11,16 @@
   font-weight: 700;
   color: var(--color-text-primary);
   margin-bottom: var(--space-md); /* 24px */
+ 
 }
 
 .cardsWrapper {
   display: flex;
   flex-direction: column;
+  
   gap: var(--space-sm); /* 16px de espaço entre os cards */
 
-  /* --- ADIÇÕES PARA O SCROLL --- */
+  /* --- CONFIGURAÇÕES PARA O SCROLL --- */
   max-height: 60vh; /* Altura máxima: 60% da altura da tela (viewport height) */
   overflow-y: auto; /* Adiciona o scroll vertical APENAS se necessário */
   padding-right: var(--space-xs); /* Adiciona um espaço para a barra de scroll não colar nos cards */
@@ -30,7 +36,10 @@
 }
 
 .cardsWrapper::-webkit-scrollbar-thumb {
-  background-color: var(--color-surface); /* Cor da barra de scroll */
+  background-color: rgba(0, 0, 0, 0.2); /* Cor da barra de scroll com transparência */
   border-radius: 20px;
-  border: 3px solid var(--color-surface);
+}
+
+.cardsWrapper::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3); /* Cor mais escura ao passar o mouse */
 }
